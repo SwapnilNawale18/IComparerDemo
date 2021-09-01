@@ -1,8 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IComparerDemo
 {
+    class EmployeeComparer : IComparer<Employee>
+    {
+        public int Compare(Employee x, Employee y)
+        {
+            return y.Salary - x.Salary;
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -20,7 +28,7 @@ namespace IComparerDemo
                 empSalary = Convert.ToInt32(Console.ReadLine());
                 lst.Add(new Employee { Name = empName, Salary = empSalary });
             }
-            lst.Sort(new Employee());
+            lst.Sort(new EmployeeComparer());
             foreach (var i in lst)
             {
                 Console.WriteLine(i);
